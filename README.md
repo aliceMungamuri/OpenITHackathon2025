@@ -1,60 +1,59 @@
-Query Processing Pipeline Flow
+# SirChartsALotUi
 
-  Here's an easy-to-understand representation of how a user query flows through Sir-Chart-a-lot  system:
+This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.15.
 
-  🧑 USER QUERY
-       ↓
-  [1] 🌐 ANGULAR UI (enhanced-chat.component.ts)
-       • User types natural language query
-       • SignalR connection sends to backend
-       ↓
-  [2] 📡 SIGNALR HUB (DataInsightHub.cs)
-       • Receives query via SubmitQuery()
-       • Coordinates the entire pipeline
-       ↓
-  [3] 🧠 DOMAIN EXPERT AGENT
-       • Analyzes query intent
-       • Identifies relevant database tables (max 5)
-       • Returns: tables, intent, complexity, relationships
-       ↓
-  [4] 💾 SCHEMA SERVICE
-       • Provides detailed schema for selected tables only
-       • Minimizes context for efficiency
-       ↓
-  [5] 🔧 SQL EXPERT AGENT
-       • Receives focused table info from Domain Expert
-       • Generates precise T-SQL query
-       • Ensures security (parameterization, SELECT only)
-       ↓
-  [6] ⚡ SQL EXECUTION SERVICE
-       • Executes query against database
-       • Streams results in batches
-       • Returns: data rows + column info
-       ↓
-  [7] 📊 VISUALIZATION SERVICE
-       • AI analyzes query intent + data characteristics
-       • Determines best response type:
-         - 📈 Chart (line, bar, pie, etc.)
-         - 📋 Table (sortable, filterable)
-         - 📝 Text (single values, summaries)
-         - 🎭 Mixed (combination)
-       • Generates complete visualization config
-       ↓
-  [8] 📡 SIGNALR RESPONSES
-       • Sends real-time updates throughout process
-       • Timeline events show progress
-       • Final visualization sent to UI
-       ↓
-  [9] 🌐 ANGULAR UI RENDERING
-       • Displays appropriate component based on type
-       • Charts use ApexCharts
-       • Tables use custom data-table component
-       • Text shows formatted responses
+## Development server
 
-  Key Design Principles:
+To start a local development server, run:
 
-  1. 3-Agent Architecture: Domain Expert focuses on "what tables", SQL Expert focuses on "how to query", and Visualization Agent
-  2. Minimal Context: Each agent gets only the information it needs
-  3. Reasoning Transparency via Timeline component to offer real-time Feedback: Users see progress at each step
-  4. AI-Driven Visualization: System intelligently chooses how to display results
-  5. Streaming: Large results stream progressively for better UX
+```bash
+ng serve
+```
+
+Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+
+## Code scaffolding
+
+Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+
+```bash
+ng generate component component-name
+```
+
+For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+
+```bash
+ng generate --help
+```
+
+## Building
+
+To build the project run:
+
+```bash
+ng build
+```
+
+This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+
+## Running unit tests
+
+To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+
+```bash
+ng test
+```
+
+## Running end-to-end tests
+
+For end-to-end (e2e) testing, run:
+
+```bash
+ng e2e
+```
+
+Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+
+## Additional Resources
+
+For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
